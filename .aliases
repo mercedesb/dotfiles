@@ -1,0 +1,68 @@
+#Bundler
+alias be="bundle exec"
+
+#Git
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add"
+alias gad="git add ."
+alias gap="git add -p"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias co="git checkout"
+alias glo="git log --oneline -20"
+alias gclean="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
+alias ifeelpretty="git show --pretty="" --name-only"
+
+#Rails/React
+alias rs="rails s"
+alias rc="rails c"
+alias ys="yarn start"
+alias yv="yarn validate"
+alias grate="rake db:migrate"
+alias rspec="bundle exec rspec"
+alias rch="rspec $(git ls-files spec --modified --others --exclude-standard)"
+
+#Other
+alias ll="ls -la"
+
+#Docker
+alias dcup="docker-compose up"
+alias dcdown="docker-compose down"
+alias dcb="docker-compose build"
+alias dce="docker-compose exec"
+alias dcr="docker-compose run"
+alias dclogs="docker-compose logs"
+alias dps="docker ps"
+
+#Mirs
+alias mirsf="cd ~/Git/Tandem/MIRS/mirs-frontend-xwing"
+alias mirsb="cd ~/Git/Tandem/MIRS/mirs-backend-yavin"
+alias graph="rake graph && cp schema.json ../mirs-frontend-xwing/"
+
+#SDGE
+alias sd="cd ~/Git/Tandem/SDGE/sdge_dev"
+alias sdapi="cd ~/Git/Tandem/SDGE/sdge_api"
+alias sdfront="cd ~/Git/Tandem/SDGE/sdge_frontend"
+alias sdoms="cd ~/Git/Tandem/SDGE/sdge_oms"
+alias sdvesta="cd ~/Git/Tandem/SDGE/sdge_vesta"
+
+#SDGE Docker commands
+alias sdbe="cd ~/Git/Tandem/SDGE/sdge_dev && docker-compose exec api bundle exec"
+alias sdrc="sdbe rails console"
+alias sdcef="cd ~/Git/Tandem/SDGE/sdge_dev && docker-compose exec frontend"
+alias sdcup="cd ~/Git/Tandem/SDGE/sdge_dev && dcup"
+alias sdcdown="cd ~/Git/Tandem/SDGE/sdge_dev && dcdown"
+alias sdclogs="cd ~/Git/Tandem/SDGE/sdge_dev && dclogs"
+alias dcef="docker-compose exec frontend"
+alias dcea="docker-compose exec api"
+alias sdpull="cd ~/Git/Tandem/SDGE/sdge && git checkout main && git pull && cd ../sdge_api && git checkout main && git pull && cd ../sdge_frontend && git checkout main && git pull && cd ../sdge_oms && git checkout main && git pull && cd ../sdge_vesta && git checkout main && git pull && cd ../sdge_dev && git checkout main && git pull"
+
+# Aker
+alias aker="cd ~/Git/Tandem/AKER"
+
+#Python
+alias python="python3"
+
+#Shortcuts
+alias aliases="open ~/castle/home/"
