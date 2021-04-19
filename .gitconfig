@@ -1,0 +1,45 @@
+[user]
+	name = Mercedes Bernard
+	email = mercedesrbernard@gmail.com
+
+[github]
+  user = mercedesb
+
+[alias]
+  co = checkout
+  cob = checkout -b
+  cbr = checkout -b
+
+  st = status
+  stat = status
+  br = branch
+
+  ci = commit
+  cim = commit -m
+
+  pl = pull --rebase
+
+  df = diff --color-words
+
+  gl = log --graph --abbrev-commit --pretty=oneline --decorate
+
+  ll = log --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Cgreen(%cr) %C(bold blue)<%an> %Creset %s' --abbrev-commit --date=relative --max-count=20
+  lll = log --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Cgreen(%cr) %C(bold blue)<%an> %Creset %s' --abbrev-commit --date=relative --max-count=100
+  this = !git init && git add . && git commit -m "Initial commit"
+  amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+  empty = commit --allow-empty -am "Empty commit"
+
+  tidy = "!f() { \
+    if [[ ! -z $1 && $1 != '--dry-run' && $1 != '-d' ]]; then \
+      if [[ $2 == '--dry-run' || $2 == '-d' ]]; then \
+        git checkout $1 && git remote prune origin && git branch --merged | grep -vE '^[ \\*]*(dev|master|staging|testing|develop)$' | awk '{print $1}'; \
+      else \
+        git checkout $1 && git remote prune origin && git branch --merged | grep -vE '^[ \\*]*(dev|master|staging|testing|develop)$' | awk '{print $1}' | xargs git branch -D; \
+      fi \
+    else \
+      echo '\n\nUsage: git tidy <base branch> [--dry-run|-d]\n\n'; \
+    fi; \
+    }; f"
+
+[core]
+	excludesfile = ~/.gitignore_global
