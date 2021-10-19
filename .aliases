@@ -13,6 +13,8 @@ alias co="git checkout"
 alias glo="git log --oneline -20"
 alias gclean="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
 alias ifeelpretty="git show --pretty="" --name-only"
+alias gsqclean='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+alias ifeelpretty="git show --pretty="" --name-only"
 
 #Rails/React
 alias rs="rails s"
@@ -22,6 +24,10 @@ alias yv="yarn validate"
 alias grate="rake db:migrate"
 alias rspec="bundle exec rspec"
 alias rch="rspec $(git ls-files spec --modified --others --exclude-standard)"
+
+#Javascript
+alias nr="npm run" 
+alias sb="npm run storybook"
 
 #Other
 alias ll="ls -la"
