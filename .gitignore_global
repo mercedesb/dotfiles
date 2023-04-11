@@ -7,8 +7,7 @@ latest.dump
 # rails erd
 erd.pdf
 erd*.pdf
-.erdconfig
+
 
 project_notes.*
-sdge_master_call_list-tandem-e2etest.csv
-sample.cs
+DrawSignatureSvg.vue

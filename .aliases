@@ -1,5 +1,7 @@
+
 #Bundler
 alias be="bundle exec"
+alias dbundle='ruby /Users/mercedesbernard/Git/CloudCity/rubygems/bundler/spec/support/bundle.rb'
 
 #Git
 alias gs="git status"
@@ -12,18 +14,21 @@ alias gco="git checkout"
 alias co="git checkout"
 alias glo="git log --oneline -20"
 alias gclean="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
-alias ifeelpretty="git show --pretty="" --name-only"
 alias gsqclean='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
-alias ifeelpretty="git show --pretty="" --name-only"
+alias gsqcleand='git checkout -q develop && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base develop $branch) && [[ $(git cherry develop $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+alias gpretty="git show --pretty="" --name-only"
+
 
 #Rails/React
 alias rs="rails s"
 alias rc="rails c"
 alias ys="yarn start"
 alias yv="yarn validate"
-alias grate="rake db:migrate"
 alias rspec="bundle exec rspec"
-alias rch="rspec $(git ls-files spec --modified --others --exclude-standard)"
+
+if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1; then
+  alias rch="rspec $(git ls-files spec --modified --others --exclude-standard)"
+fi
 
 #Javascript
 alias nr="npm run" 
@@ -33,6 +38,7 @@ alias sb="npm run storybook"
 alias ll="ls -la"
 
 #Docker
+alias dc="docker-compose" 
 alias dcup="docker-compose up"
 alias dcdown="docker-compose down"
 alias dcb="docker-compose build"
@@ -41,10 +47,6 @@ alias dcr="docker-compose run"
 alias dclogs="docker-compose logs"
 alias dps="docker ps"
 
-#Mirs
-alias mirsf="cd ~/Git/Tandem/MIRS/mirs-frontend-xwing"
-alias mirsb="cd ~/Git/Tandem/MIRS/mirs-backend-yavin"
-alias graph="rake graph && cp schema.json ../mirs-frontend-xwing/"
 
 #SDGE
 alias sd="cd ~/Git/Tandem/SDGE/sdge_dev"
@@ -64,8 +66,15 @@ alias dcef="docker-compose exec frontend"
 alias dcea="docker-compose exec api"
 alias sdpull="cd ~/Git/Tandem/SDGE/sdge && git checkout main && git pull && cd ../sdge_api && git checkout main && git pull && cd ../sdge_frontend && git checkout main && git pull && cd ../sdge_oms && git checkout main && git pull && cd ../sdge_vesta && git checkout main && git pull && cd ../sdge_dev && git checkout main && git pull"
 
+
 # Aker
-alias aker="cd ~/Git/Tandem/AKER"
+alias aker="cd ~/Git/Personal/AKER"
+
+# Lob
+alias lob="cd ~/Git/CloudCity/Lob"
+
+# Kompliant
+alias komp="cd ~/Git/CloudCity/Kompliant/kompliant-app" 
 
 #Python
 alias python="python3"
